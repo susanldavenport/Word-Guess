@@ -7,3 +7,17 @@
 //* A function that takes a character as an argument and calls the guess function on each letter object (the second function defined in `Letter.js`)
 
 //requires letter.js
+
+const Letter = require('./letter.js');
+
+function Word(word) {
+  this.wordArr = word.split('');
+  this.letterCount = this.wordArr.length;
+  this.wordArr.forEach(letter => {
+    let test = new Letter(letter);
+    console.log(test);
+    console.log(test.isGuessed);
+  })
+};
+
+module.exports = Word;
