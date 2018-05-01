@@ -11,8 +11,35 @@ const inquirer = require('inquirer');
 
 let guessLeft = 5;
 let userGuess;
+let gameWord;
 
+const wordList = ['football', 'soccer', 'hockey', 'tennis', 'boxing', 'fortnite' ]
+
+function gamePlay() {
+  getWord();
+  userInput();
+}
+
+function getWord() {
+    let rand = Math.floor(Math.random() * 6); 
+    // gameWord = wordList[rand]; 
+    gameWord = new Word(wordList[rand]);
+    // return gameWord; 
+    console.log(gameWord.word); 
+}
 
 function userInput () {
-  
+  if (remainingGuesses > 0 ) {
+    inquirer.prompt([
+      {
+        name: 'userGuess', 
+        message: 'Guess a letter', 
+      }
+    ]).then(input => {
+      userGuess = input.userGuess; 
+      let wordLetters = getWord.wordArr; 
+      wordLetters.forEach(letter => letter.checked(userGuess));
+      userInput(); 
+    });
+  }
 };

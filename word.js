@@ -11,12 +11,15 @@
 const Letter = require('./letter.js');
 
 function Word(word) {
-  this.wordArr = word.split('');
+  this.word = word.split('');
+  this.wordArr = [];
   this.letterCount = this.wordArr.length;
+
   this.wordArr.forEach(letter => {
-    let test = new Letter(letter);
-    console.log(test);
-    console.log(test.isGuessed);
+    let newLetter = new Letter(letter);
+    // console.log(test);
+    // console.log(test.isGuessed);
+    this.wordArr.push(newLetter);
   })
 };
 

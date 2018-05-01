@@ -10,26 +10,27 @@
 
 console.log('inside letter.js');
 
-function Letter (guess){
-  console.log('here');
-  this.ltrGuess = guess,
-  console.log(this.ltrGuess);
+function Letter(guess){
+  this.letterGuess = guess,
+  console.log(this.letterGuess);
   this.isGuessed = false,
   this.retGuess = function(){
-    if (this.isGuessed === true) {
-      return guess;
-    } else {
-      return ('_');
+    if (this.isGuessed) {
       console.log(guess);
+      return guess;
+    } else if (!this.isGuessed) {
+      console.log('_');
     }
   }
   this.checked = function(guess) {
-    if (guess === this.ltrGuess) {
-      console.log('Checked');
-      this.isGuessed === true;
+    if (guess === this.letterGuess) {
+      // console.log('Checked');
+      this.isGuessed = true;
+      this.retGuess();
     } else {
-      console.log('No Match');
-      this.isGuessed === false;
+      // console.log('No Match');
+      this.isGuessed = false;
+      this.retGuess();
     }
   }
 };
